@@ -11,6 +11,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    INetworkClient.h \
     mainwindow.h
 
 FORMS += \
