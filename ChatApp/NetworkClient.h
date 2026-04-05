@@ -1,0 +1,4 @@
+#ifndef INETWORKCLIENT_H
+#define INETWORKCLIENT_H
+
+#endif // INETWORKCLIENT_H
