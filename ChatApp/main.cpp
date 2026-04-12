@@ -1,14 +1,36 @@
 #include "groupwindow.h"
 #include "mainwindow.h"
-
+#include "loginwindow.h"
+#include "loginmanager.h"
+#include "userlist.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-   // MainWindow w;
-    //w.show();
-    GroupWindow w2;
-    w2.show();
+    NetworkClient networkClient;
+    LoginManager loginManager(&networkClient);
+    LoginWindow loginWindow(&loginManager);
+    UserList userListWindow(&networkClient, &loginManager);
+    loginWindow.show();
+
+    QObject::connect(&loginWindow, &LoginWindow::loginSuccessful, [&](const QString& username){
+        loginWindow.hide();
+        userListWindow.show();
+        networkClient.requestUserList();
+    });
+
+    QObject::connect(&userListWindow, &UserList::logOut, [&](){
+        loginWindow.show();
+        userListWindow.close();
+        loginManager.logout();
+    });
+
+    QObject::connect(&networkClient, &NetworkClient::userListReceived, [&](QList<QString> userList){
+        userListWindow.update(userList);
+    });
+
+
+
     return a.exec();
 }
