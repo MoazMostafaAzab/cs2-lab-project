@@ -8,19 +8,28 @@ CONFIG += c++17
 
 SOURCES += \
     GroupManager.cpp \
+    NetworkClient.cpp \
     groupwindow.cpp \
+    loginmanager.cpp \
+    loginwindow.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    userlist.cpp
 
 HEADERS += \
     GroupManager.h \
     NetworkClient.h \
     groupwindow.h \
-    mainwindow.h
+    loginmanager.h \
+    loginwindow.h \
+    mainwindow.h \
+    userlist.h
 
 FORMS += \
     groupwindow.ui \
-    mainwindow.ui
+    loginwindow.ui \
+    mainwindow.ui \
+    userlist.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
