@@ -24,7 +24,7 @@ void UserList::on_listWidget_currentItemChanged(QListWidgetItem *current, QListW
 
 void UserList::on_pushButton_2_clicked()
 {
-    GroupWindow* GW = new GroupWindow;
+    GroupWindow* GW = new GroupWindow(m_network, m_loginManager->getCurrentUser());
     GW->show();
 }
 
