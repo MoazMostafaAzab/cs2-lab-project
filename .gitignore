@@ -1,0 +1,13 @@
+# Build artifacts
+release/
+debug/
+Makefile
+Makefile.Release
+Makefile.Debug
+.qmake.stash
+*.o
+*.exe
+*.a
+moc_*.cpp
+ui_*.h
+*_predefs.h
