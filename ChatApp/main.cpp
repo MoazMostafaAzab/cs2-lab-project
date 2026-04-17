@@ -3,6 +3,7 @@
 #include "loginwindow.h"
 #include "loginmanager.h"
 #include "userlist.h"
+#include "NetworkClient.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

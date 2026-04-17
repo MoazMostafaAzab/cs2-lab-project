@@ -1,7 +1,7 @@
 #ifndef GROUPWINDOW_H
 #define GROUPWINDOW_H
 #include "GroupManager.h"
-#include "NetworkClient.h"
+#include "INetworkClient.h"
 #include <QWidget>
 namespace Ui {
 class GroupWindow;
@@ -10,7 +10,7 @@ class GroupWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit GroupWindow(NetworkClient* networkClient, const QString& username, QWidget *parent = nullptr);
+    explicit GroupWindow(INetworkClient* networkClient, const QString& username, QWidget *parent = nullptr);
     ~GroupWindow();
 private slots:
     void on_pushButton_CreateGroup_clicked();

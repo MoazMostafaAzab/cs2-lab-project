@@ -4,6 +4,7 @@
 #include "LoginManager.h"
 #include "qlistwidget.h"
 #include <QWidget>
+#include "INetworkClient.h"
 
 namespace Ui {
 class UserList;
@@ -14,7 +15,7 @@ class UserList : public QWidget
     Q_OBJECT
 
 public:
-    UserList(NetworkClient* network, LoginManager* loginManager,QWidget *parent = nullptr);
+    UserList(INetworkClient* network, LoginManager* loginManager,QWidget *parent = nullptr);
     ~UserList();
     void update(QList<QString> usernames);
 
@@ -31,7 +32,7 @@ private slots:
 
 private:
     Ui::UserList *ui;
-    NetworkClient* m_network;
+    INetworkClient* m_network;
     LoginManager* m_loginManager;
 };
 

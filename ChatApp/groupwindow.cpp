@@ -2,7 +2,7 @@
 #include "ui_groupwindow.h"
 #include <QMessageBox>
 
-GroupWindow::GroupWindow(NetworkClient* networkClient, const QString& username, QWidget *parent)
+GroupWindow::GroupWindow(INetworkClient* networkClient, const QString& username, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::GroupWindow)
 {

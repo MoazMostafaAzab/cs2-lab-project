@@ -4,8 +4,9 @@
 #include <QObject>
 #include <QString>
 #include <QTcpSocket>
+#include "INetworkClient.h"
 
-class NetworkClient : public QObject {
+class NetworkClient : public QObject, public INetworkClient {
     Q_OBJECT
 
 public:
@@ -26,6 +27,8 @@ public:
     void addUserToGroup(const QString& groupName, const QString& username);
     void removeUserFromGroup(const QString& groupName, const QString& username);
     void sendGroupMessage(const QString& groupName, const QString& message);
+
+
 
 signals:
     void userListReceived(QList<QString> userList);

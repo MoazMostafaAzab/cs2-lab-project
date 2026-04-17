@@ -1,9 +1,9 @@
 #include "GroupManager.h"
-#include "NetworkClient.h"
+#include "INetworkClient.h"
 using namespace std;
 
 
-GroupManager::GroupManager(NetworkClient* network, const QString& currentuser){
+GroupManager::GroupManager(INetworkClient* network, const QString& currentuser){
     networkClient = network;
     currentUser = currentuser;
 }

@@ -1,6 +1,7 @@
 #include "loginmanager.h"
+#include "INetworkClient.h"
 
-LoginManager::LoginManager(NetworkClient* network) : m_network(network), m_currentUser("") {}
+LoginManager::LoginManager(INetworkClient* network) : m_network(network), m_currentUser("") {}
 
 bool LoginManager::login(const QString& username){
     if (username.isEmpty())

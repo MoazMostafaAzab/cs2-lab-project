@@ -1,29 +1,32 @@
 #include "chatmanager.h"
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonParseError>
 
 ChatManager::ChatManager(INetworkClient* network, QObject* parent)
     : QObject(parent), m_network(network)
 {
 }
 
-bool ChatManager::sendMessage(const QString& senderUsername, const QString& messageText)
+bool ChatManager::sendMessage(const QString& toUser, const QString& messageText)
 {
     if (!validateMessage(messageText)) {
         emit errorOccurred(m_lastError);
         return false;
     }
 
-    QByteArray jsonData = formatMessageAsJson(senderUsername, messageText);
-
     if (m_network) {
-        m_network->sendData(jsonData);
+
+        m_network->sendPrivateMessage(toUser, messageText);
     }
 
-    emit messageSent(senderUsername, messageText);
+    emit messageSent(toUser, messageText);
     return true;
 }
 
 void ChatManager::handleIncomingData(const QByteArray& rawData)
 {
+
     QJsonParseError parseError;
     QJsonDocument doc = QJsonDocument::fromJson(rawData, &parseError);
 
@@ -48,16 +51,6 @@ void ChatManager::handleIncomingData(const QByteArray& rawData)
 QString ChatManager::lastError() const
 {
     return m_lastError;
-}
-
-QByteArray ChatManager::formatMessageAsJson(const QString& sender, const QString& text)
-{
-    QJsonObject obj;
-    obj["type"] = "chat_message";
-    obj["sender"] = sender;
-    obj["payload"] = text;
-
-    return QJsonDocument(obj).toJson(QJsonDocument::Compact);
 }
 
 bool ChatManager::validateMessage(const QString& text)

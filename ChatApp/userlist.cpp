@@ -3,7 +3,7 @@
 #include "chatwindow.h"
 #include "groupwindow.h"
 
-UserList::UserList(NetworkClient* network, LoginManager* loginManager, QWidget *parent)
+UserList::UserList(INetworkClient* network, LoginManager* loginManager, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::UserList)
 {
@@ -23,7 +23,7 @@ void UserList::on_listWidget_currentItemChanged(QListWidgetItem *current, QListW
     if(previous == nullptr) return;
 
     QString selectedUser = current->text();
-    ChatWindow* chatWin = new ChatWindow(this);
+    ChatWindow* chatWin = new ChatWindow(m_network, this);
     chatWin->setUsername(selectedUser);
     chatWin->show();
 }

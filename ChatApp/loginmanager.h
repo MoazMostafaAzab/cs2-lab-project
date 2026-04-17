@@ -2,18 +2,18 @@
 #define LOGINMANAGER_H
 
 #include <QString>
-#include <NetworkClient.h>
+#include <INetworkClient.h>
 
 class LoginManager
 {
 public:
-    LoginManager(NetworkClient* network);
+    LoginManager(INetworkClient* network);
     bool login(const QString& username);
     void logout();
     QString getCurrentUser() const;
 
 private:
-    NetworkClient* m_network;
+    INetworkClient* m_network;
     QString m_currentUser;
 
 };
