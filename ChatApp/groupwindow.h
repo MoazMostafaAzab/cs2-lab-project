@@ -16,6 +16,8 @@ private slots:
     void on_pushButton_CreateGroup_clicked();
     void on_pushButton_AddUser_clicked();
     void on_pushButton_RemoveUser_clicked();
+    void on_pushButton_groupwindowBack_clicked();
+
 private:
     Ui::GroupWindow *ui;
     GroupManager* groupManager;

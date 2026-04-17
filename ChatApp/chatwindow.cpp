@@ -17,3 +17,9 @@ void ChatWindow::setUsername(const QString& username)
 {
     m_username = username;
 }
+
+void ChatWindow::on_pushButton_chatwindowBack_clicked()
+{
+    this->close();
+}
+

@@ -1,5 +1,6 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
+#include <QMessageBox>
 #include "userlist.h"
 
 
@@ -23,6 +24,6 @@ void LoginWindow::on_connectButton_clicked()
         emit loginSuccessful(username);
     }
     else{
-        ui->errorLabel->setText("Username cannot be empty");
+        QMessageBox::warning(this, "Error", "Username cannot be empty");
     }
 }

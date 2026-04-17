@@ -17,6 +17,9 @@ public:
 
     void setUsername(const QString& username);
 
+private slots:
+    void on_pushButton_chatwindowBack_clicked();
+
 private:
     Ui::ChatWindow *ui;
     QString m_username;

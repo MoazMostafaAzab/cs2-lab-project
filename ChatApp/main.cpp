@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
         loginWindow.hide();
         userListWindow.show();
         networkClient.requestUserList();
+        QList<QString> testUsers = {"User1", "User2", "User3"};
+        userListWindow.update(testUsers);
     });
 
     QObject::connect(&userListWindow, &UserList::logOut, [&](){

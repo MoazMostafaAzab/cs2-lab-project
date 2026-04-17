@@ -1,5 +1,6 @@
 #include "userlist.h"
 #include "ui_userlist.h"
+#include "chatwindow.h"
 #include "groupwindow.h"
 
 UserList::UserList(NetworkClient* network, LoginManager* loginManager, QWidget *parent)
@@ -18,7 +19,13 @@ UserList::~UserList()
 
 void UserList::on_listWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
 {
+    if(current == nullptr) return;
+    if(previous == nullptr) return;
 
+    QString selectedUser = current->text();
+    ChatWindow* chatWin = new ChatWindow(this);
+    chatWin->setUsername(selectedUser);
+    chatWin->show();
 }
 
 

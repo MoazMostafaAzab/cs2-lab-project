@@ -80,3 +80,9 @@ void GroupWindow::on_pushButton_RemoveUser_clicked()
     // ui->lineEdit_GroupName->clear();
 }
 
+
+void GroupWindow::on_pushButton_groupwindowBack_clicked()
+{
+    this->close();
+}
+

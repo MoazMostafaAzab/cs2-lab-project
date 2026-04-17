@@ -16,8 +16,8 @@
   <widget class="QTextBrowser" name="chatDisplay">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>20</y>
+     <x>80</x>
+     <y>50</y>
      <width>256</width>
      <height>192</height>
     </rect>
@@ -26,8 +26,8 @@
   <widget class="QLineEdit" name="messageInput">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>230</y>
+     <x>80</x>
+     <y>290</y>
      <width>251</width>
      <height>21</height>
     </rect>
@@ -36,14 +36,53 @@
   <widget class="QPushButton" name="sendButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>250</y>
+     <x>170</x>
+     <y>350</y>
      <width>100</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
-    <string>send</string>
+    <string>Send</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>20</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Messages: </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>260</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Type a message:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_chatwindowBack">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>410</y>
+     <width>101</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
    </property>
   </widget>
  </widget>

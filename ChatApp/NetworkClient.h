@@ -12,16 +12,16 @@ public:
     explicit NetworkClient(QObject* parent = nullptr);
     ~NetworkClient() = default;
 
-    // MAZEN
+
     void connectToServer(const QString& username);
     void disconnect();
     void requestUserList();
 
-    // KARIM
+
     void sendPrivateMessage(const QString& toUser, const QString& message);
     void sendBroadcastMessage(const QString& message);
 
-    // ABDURRAHMAN
+
     void createGroup(const QString& groupName);
     void addUserToGroup(const QString& groupName, const QString& username);
     void removeUserFromGroup(const QString& groupName, const QString& username);
