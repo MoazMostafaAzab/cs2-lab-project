@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include "chatwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -13,4 +13,13 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::onLoginSuccess(const QString& username)
+{
+    ChatWindow* chat = new ChatWindow(this);
+    chat->setUsername(username);
+    chat->show();
+
+    this->hide();
 }
