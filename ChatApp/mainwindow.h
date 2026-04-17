@@ -17,7 +17,11 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
+private slots:
+    void onLoginSuccess(const QString& username);
+
 private:
     Ui::MainWindow *ui;
 };
+
 #endif // MAINWINDOW_H

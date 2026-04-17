@@ -9,6 +9,8 @@ CONFIG += c++17
 SOURCES += \
     GroupManager.cpp \
     NetworkClient.cpp \
+    chatmanager.cpp \
+    chatwindow.cpp \
     groupwindow.cpp \
     loginmanager.cpp \
     loginwindow.cpp \
@@ -18,7 +20,10 @@ SOURCES += \
 
 HEADERS += \
     GroupManager.h \
+    INetworkClient.h \
     NetworkClient.h \
+    chatmanager.h \
+    chatwindow.h \
     groupwindow.h \
     loginmanager.h \
     loginwindow.h \
@@ -26,6 +31,7 @@ HEADERS += \
     userlist.h
 
 FORMS += \
+    chatwindow.ui \
     groupwindow.ui \
     loginwindow.ui \
     mainwindow.ui \
