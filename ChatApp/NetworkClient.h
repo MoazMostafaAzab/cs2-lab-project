@@ -1,37 +1,54 @@
 #ifndef NETWORKCLIENT_H
 #define NETWORKCLIENT_H
 
+#include <QObject>
 #include <QString>
+#include <QTcpSocket>
+#include "INetworkClient.h"
 
-class NetworkClient {
+class NetworkClient : public QObject, public INetworkClient {
+    Q_OBJECT
+
 public:
+    explicit NetworkClient(QObject* parent = nullptr);
+    ~NetworkClient() = default;
 
 
-    // MAZEN — Login / Logout / User List
-
-    virtual void connectToServer(const QString& username) = 0;
-    virtual void disconnect() = 0;
-    virtual void requestUserList() = 0;
+    void connectToServer(const QString& username);
+    void disconnect();
+    void requestUserList();
 
 
-    // KARIM — Send / Receive Messages
-
-    virtual void sendPrivateMessage(const QString& toUser, const QString& message) = 0;
-    virtual void sendBroadcastMessage(const QString& message) = 0;
+    void sendPrivateMessage(const QString& toUser, const QString& message);
+    void sendBroadcastMessage(const QString& message);
 
 
-    // ABDURRAHMAN — Group Management
-
-    virtual void createGroup(const QString& groupName) = 0;
-    virtual void addUserToGroup(const QString& groupName, const QString& username) = 0;
-    virtual void removeUserFromGroup(const QString& groupName, const QString& username) = 0;
-    virtual void sendGroupMessage(const QString& groupName, const QString& message) = 0;
+    void createGroup(const QString& groupName);
+    void addUserToGroup(const QString& groupName, const QString& username);
+    void removeUserFromGroup(const QString& groupName, const QString& username);
+    void sendGroupMessage(const QString& groupName, const QString& message);
 
 
-    // MOAZ — Will mock all of the above
 
+signals:
+    void userListReceived(QList<QString> userList);
+    void connectedToServer();
+    void disconnectedFromServer();
 
-    virtual ~NetworkClient() = default;
+private slots:
+    void onConnected();
+    void onDisconnected();
+    void onReadyRead();
+    void onErrorOccurred(QAbstractSocket::SocketError error);
+
+private:
+    void sendJson(const QString& type, const QJsonObject& payload);
+
+    QTcpSocket* m_socket;
+    QString m_username;
+
+    static const QString SERVER_HOST;
+    static const quint16 SERVER_PORT;
 };
 
 #endif // NETWORKCLIENT_H

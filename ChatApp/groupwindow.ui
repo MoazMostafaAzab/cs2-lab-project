@@ -121,6 +121,19 @@
     <string>Group Members:</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton_groupwindowBack">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>270</y>
+     <width>93</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -1,4 +1,4 @@
-QT += widgets
+QT += widgets network
 
 CONFIG += c++17
 
@@ -9,21 +9,36 @@ CONFIG += c++17
 SOURCES += \
     GroupManager.cpp \
     groupchatwindow.cpp \
+    NetworkClient.cpp \
+    chatmanager.cpp \
+    chatwindow.cpp \
     groupwindow.cpp \
+    loginmanager.cpp \
+    loginwindow.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    userlist.cpp
 
 HEADERS += \
     GroupManager.h \
+    INetworkClient.h \
     NetworkClient.h \
     groupchatwindow.h \
+    chatmanager.h \
+    chatwindow.h \
     groupwindow.h \
-    mainwindow.h
+    loginmanager.h \
+    loginwindow.h \
+    mainwindow.h \
+    userlist.h
 
 FORMS += \
     groupchatwindow.ui \
+    chatwindow.ui \
     groupwindow.ui \
-    mainwindow.ui
+    loginwindow.ui \
+    mainwindow.ui \
+    userlist.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

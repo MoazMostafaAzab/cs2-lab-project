@@ -2,12 +2,12 @@
 #include "ui_groupwindow.h"
 #include <QMessageBox>
 
-GroupWindow::GroupWindow(QWidget *parent)
+GroupWindow::GroupWindow(INetworkClient* networkClient, const QString& username, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::GroupWindow)
 {
     ui->setupUi(this);
-    groupManager = new GroupManager(nullptr, "Abdurrahman");
+    groupManager = new GroupManager(networkClient, username);
 }
 
 GroupWindow::~GroupWindow()
