@@ -81,8 +81,8 @@ void GroupWindow::on_pushButton_RemoveUser_clicked()
 }
 
 
-void GroupWindow::on_pushButton_groupwindowBack_clicked()
+void GroupWindow::on_pushButton_groupSendMessage_clicked()
 {
-    this->close();
+
 }
 
