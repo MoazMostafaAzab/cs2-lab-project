@@ -8,6 +8,7 @@ CONFIG += c++17
 
 SOURCES += \
     GroupManager.cpp \
+    groupchatwindow.cpp \
     groupwindow.cpp \
     main.cpp \
     mainwindow.cpp
@@ -15,10 +16,12 @@ SOURCES += \
 HEADERS += \
     GroupManager.h \
     NetworkClient.h \
+    groupchatwindow.h \
     groupwindow.h \
     mainwindow.h
 
 FORMS += \
+    groupchatwindow.ui \
     groupwindow.ui \
     mainwindow.ui
 
