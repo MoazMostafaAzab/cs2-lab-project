@@ -17,6 +17,7 @@ SOURCES += \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
+    test_groupmanager.cpp \
     userlist.cpp
 
 HEADERS += \
