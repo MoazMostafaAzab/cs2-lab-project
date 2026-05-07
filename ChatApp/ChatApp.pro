@@ -8,10 +8,17 @@ CONFIG += c++17
 
 # Testing
 QT += testlib
-LIBS += -lgtest -lgmock -lgtest_main
+INCLUDEPATH += googletest/googletest/include
+INCLUDEPATH += googletest/googlemock/include
+INCLUDEPATH += googletest/googletest
+INCLUDEPATH += googletest/googlemock
+SOURCES += \
+    googletest/googletest/src/gtest-all.cc \
+    googletest/googlemock/src/gmock-all.cc
 
 SOURCES += \
-    test_groupmanager.cpp
+    test_groupmanager.cpp \
+    test_login_chat.cpp
 SOURCES += \
     GroupManager.cpp \
     groupchatwindow.cpp \
