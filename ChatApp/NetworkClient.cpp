@@ -9,7 +9,7 @@ const quint16 NetworkClient::SERVER_PORT = 12345;
 
 NetworkClient::NetworkClient(QObject* parent)
     : QObject(parent),
-      m_socket(new QTcpSocket(this))
+    m_socket(new QTcpSocket(this))
 {
     connect(m_socket, &QTcpSocket::connected,    this, &NetworkClient::onConnected);
     connect(m_socket, &QTcpSocket::disconnected, this, &NetworkClient::onDisconnected);
@@ -17,7 +17,6 @@ NetworkClient::NetworkClient(QObject* parent)
     connect(m_socket, &QAbstractSocket::errorOccurred,
             this, &NetworkClient::onErrorOccurred);
 }
-
 
 void NetworkClient::sendJson(const QString& type, const QJsonObject& payload)
 {
@@ -37,7 +36,6 @@ void NetworkClient::sendJson(const QString& type, const QJsonObject& payload)
 
     qDebug() << "[NetworkClient] Sent:" << data.trimmed();
 }
-
 
 void NetworkClient::onConnected()
 {
@@ -77,6 +75,9 @@ void NetworkClient::onReadyRead()
                 users << v.toString();
             emit userListReceived(users);
         }
+        else if (type == "private_message") {
+            emit dataReceived(line);
+        }
     }
 }
 
@@ -84,7 +85,6 @@ void NetworkClient::onErrorOccurred(QAbstractSocket::SocketError error)
 {
     qWarning() << "[NetworkClient] Socket error:" << error << m_socket->errorString();
 }
-
 
 void NetworkClient::connectToServer(const QString& username)
 {
@@ -150,4 +150,14 @@ void NetworkClient::sendGroupMessage(const QString& groupName, const QString& me
     payload["groupName"] = groupName;
     payload["message"]   = message;
     sendJson("group_message", payload);
+}
+
+void NetworkClient::sendData(const QByteArray& data)
+{
+    if (m_socket->state() != QAbstractSocket::ConnectedState) {
+        qWarning() << "[NetworkClient] Not connected — cannot sendData";
+        return;
+    }
+    m_socket->write(data);
+    m_socket->flush();
 }
