@@ -1,13 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
-#include "INetworkClient.h"
 #include <QMainWindow>
+#include "chatmanager.h"
+#include "NetworkClient.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -15,16 +13,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(INetworkClient* network, QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
 private slots:
     void onLoginSuccess(const QString& username);
 
-
 private:
     Ui::MainWindow *ui;
-    INetworkClient* m_network;
+    NetworkClient* m_network = nullptr;
+    ChatManager* m_chatManager = nullptr;
 };
-
 #endif // MAINWINDOW_H
