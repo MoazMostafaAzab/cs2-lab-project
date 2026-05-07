@@ -15,19 +15,19 @@ public:
     void sendData(const QByteArray& data) override;
 
     // MAZEN
-    void connectToServer(const QString& username);
-    void disconnect();
-    void requestUserList();
+    void connectToServer(const QString& username)override;
+    void disconnect()override;
+    void requestUserList()override;
 
     // KARIM
-    void sendPrivateMessage(const QString& toUser, const QString& message);
-    void sendBroadcastMessage(const QString& message);
+    void sendPrivateMessage(const QString& toUser, const QString& message)override;
+    void sendBroadcastMessage(const QString& message)override;
 
     // ABDURRAHMAN
-    void createGroup(const QString& groupName);
-    void addUserToGroup(const QString& groupName, const QString& username);
-    void removeUserFromGroup(const QString& groupName, const QString& username);
-    void sendGroupMessage(const QString& groupName, const QString& message);
+    void createGroup(const QString& groupName)override;
+    void addUserToGroup(const QString& groupName, const QString& username)override;
+    void removeUserFromGroup(const QString& groupName, const QString& username)override;
+    void sendGroupMessage(const QString& groupName, const QString& message)override;
 
 signals:
     void userListReceived(QList<QString> userList);

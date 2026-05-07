@@ -106,11 +106,11 @@ void NetworkClient::requestUserList()
     sendJson("request_user_list", QJsonObject());
 }
 
-void NetworkClient::sendPrivateMessage(const QString& toUser, const QString& message)
+void NetworkClient::sendPrivateMessage(const QString& toUser, const QString& message    )
 {
     QJsonObject payload;
     payload["to"]      = toUser;
-    payload["message"] = message;
+    payload["text"] = message;
     sendJson("private_message", payload);
 }
 
@@ -148,7 +148,7 @@ void NetworkClient::sendGroupMessage(const QString& groupName, const QString& me
 {
     QJsonObject payload;
     payload["groupName"] = groupName;
-    payload["message"]   = message;
+    payload["text"]   = message;
     sendJson("group_message", payload);
 }
 
