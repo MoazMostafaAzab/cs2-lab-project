@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
 
     QObject::connect(&loginWindow, &LoginWindow::loginSuccessful, [&](const QString& username){
         loginWindow.hide();
+        userListWindow.initGroupManager();
         userListWindow.show();
         QTimer::singleShot(500, [&](){
             networkClient.requestUserList();
