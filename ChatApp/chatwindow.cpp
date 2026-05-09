@@ -1,5 +1,6 @@
 #include "chatwindow.h"
 #include "ui_chatwindow.h"
+#include "QMessageBox"
 
 ChatWindow::ChatWindow(INetworkClient* network, QWidget *parent)
     : QDialog(parent)
@@ -36,8 +37,10 @@ void ChatWindow::on_sendButton_clicked()
     if (!m_chatManager) return;
 
     QString message = ui->messageInput->text().trimmed();
-    if (message.isEmpty()) return;
-
+    if (message.isEmpty()){
+        QMessageBox::warning(this, "Error", "Message cannot be empty.");
+        return;
+    }
     bool success = m_chatManager->sendMessage(m_username, message);
 
     if (success) {
