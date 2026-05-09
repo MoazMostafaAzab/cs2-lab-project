@@ -33,6 +33,7 @@ private:
 
     QMap<int, ClientRecord> m_connections;
     QMap<QString, int> m_userIndex;
+    QMap<QString, QList<QString>>    m_groups;
 
     void deliverTo(const QString& targetUser, const QJsonObject& envelope);
     QByteArray toLine(const QJsonObject& obj) const;
