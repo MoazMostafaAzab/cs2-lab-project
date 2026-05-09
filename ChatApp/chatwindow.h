@@ -12,10 +12,11 @@ class ChatWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit ChatWindow(QWidget *parent = nullptr);
+    explicit ChatWindow(INetworkClient* network, QWidget *parent = nullptr);
     ~ChatWindow();
     void setUsername(const QString& username);
     void setChatManager(ChatManager* manager);
+    void appendMessage(const QString& sender, const QString& text);
 
 private:
     Ui::ChatWindow *ui;
@@ -25,6 +26,7 @@ private:
 private slots:
     void on_sendButton_clicked();
     void onMessageReceived(const QString &sender, const QString &text);
+    void on_pushButton_chatwindowBack_clicked();
 };
 
 #endif // CHATWINDOW_H

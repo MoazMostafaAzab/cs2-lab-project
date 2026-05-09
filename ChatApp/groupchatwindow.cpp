@@ -34,6 +34,10 @@ void GroupChatWindow::on_pushButton_Send_clicked()
     }
 }
 
+void GroupChatWindow::appendMessage(const QString& sender, const QString& text)
+{
+    ui->textBrowser_GroupMessages->append(sender + ": " + text);
+}
 
 void GroupChatWindow::on_pushButton_Back_clicked()
 {

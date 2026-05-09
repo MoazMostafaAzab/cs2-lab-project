@@ -1,13 +1,15 @@
 #include "groupwindow.h"
 #include "ui_groupwindow.h"
+#include "groupchatwindow.h"
 #include <QMessageBox>
 
-GroupWindow::GroupWindow(INetworkClient* networkClient, const QString& username, QWidget *parent)
+GroupWindow::GroupWindow(INetworkClient* networkClient, const QString& username, GroupManager* groupManager, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::GroupWindow)
 {
     ui->setupUi(this);
-    groupManager = new GroupManager(networkClient, username);
+    this->groupManager = groupManager;
+    m_network = networkClient;
 }
 
 GroupWindow::~GroupWindow()
@@ -83,6 +85,16 @@ void GroupWindow::on_pushButton_RemoveUser_clicked()
 
 void GroupWindow::on_pushButton_groupSendMessage_clicked()
 {
+    QString groupName = ui->lineEdit_GroupName->text();
+    if(groupName.isEmpty()){
+        QMessageBox::warning(this, "Error", "Please enter a group name first");
+        return;
+    }
+    emit openGroupChat(groupName);
+}
 
+void GroupWindow::on_pushButton_groupwindowBack_clicked()
+{
+    this->close();
 }
 

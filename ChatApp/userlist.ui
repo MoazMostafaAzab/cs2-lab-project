@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>422</width>
-    <height>272</height>
+    <width>350</width>
+    <height>495</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,17 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>10</y>
-     <width>131</width>
-     <height>20</height>
+     <x>100</x>
+     <y>20</y>
+     <width>231</width>
+     <height>30</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Users &amp; Group List</string>
@@ -29,20 +35,20 @@
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>50</y>
-     <width>256</width>
-     <height>192</height>
+     <x>30</x>
+     <y>90</y>
+     <width>290</width>
+     <height>141</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>200</y>
-     <width>101</width>
-     <height>29</height>
+     <x>180</x>
+     <y>450</y>
+     <width>120</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="text">
@@ -52,14 +58,50 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>160</y>
-     <width>101</width>
-     <height>29</height>
+     <x>40</x>
+     <y>450</y>
+     <width>120</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="text">
     <string>Create Group</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_users">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>60</y>
+     <width>63</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Users:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>240</y>
+     <width>63</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Groups:</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget_groups">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>260</y>
+     <width>290</width>
+     <height>141</height>
+    </rect>
    </property>
   </widget>
  </widget>

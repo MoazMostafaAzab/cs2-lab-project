@@ -8,18 +8,20 @@ CONFIG += c++17
 
 # Testing
 QT += testlib
-INCLUDEPATH += googletest/googletest/include
-INCLUDEPATH += googletest/googlemock/include
-INCLUDEPATH += googletest/googletest
-INCLUDEPATH += googletest/googlemock
-SOURCES += \
-    googletest/googletest/src/gtest-all.cc \
-    googletest/googlemock/src/gmock-all.cc
+DEFINES += GTEST_HAS_PTHREAD=0
+INCLUDEPATH += $$PWD/googletest/googletest/include
+INCLUDEPATH += $$PWD/googletest/googlemock/include
+INCLUDEPATH += $$PWD/googletest/googletest
+INCLUDEPATH += $$PWD/googletest/googlemock
 
 SOURCES += \
-    test_groupmanager.cpp \
-    test_login_chat.cpp
+    $$PWD/googletest/googletest/src/gtest-all.cc \
+    $$PWD/googletest/googlemock/src/gmock-all.cc \
+
+
+
 SOURCES += \
+    test_login_chat.cpp\
     GroupManager.cpp \
     groupchatwindow.cpp \
     NetworkClient.cpp \
@@ -44,6 +46,7 @@ HEADERS += \
     loginmanager.h \
     loginwindow.h \
     mainwindow.h \
+    main.cpp \
     userlist.h
 
 FORMS += \

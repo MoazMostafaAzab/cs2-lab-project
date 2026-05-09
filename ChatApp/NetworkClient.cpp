@@ -76,8 +76,30 @@ void NetworkClient::onReadyRead()
             emit userListReceived(users);
         }
         else if (type == "private_message") {
+            QString sender = msg["sender"].toString();
+            QString text = msg["payload"].toObject()["text"].toString();
+            emit privateMessageReceived(sender, text);
             emit dataReceived(line);
         }
+        else if (type == "group_message") {
+            QString sender    = msg["sender"].toString();
+            QString groupName = msg["payload"].toObject()["group"].toString();
+            QString text      = msg["payload"].toObject()["text"].toString();
+            emit groupMessageReceived(groupName, sender, text);
+        }
+        else if (type == "added_to_group") {
+            QString groupName = msg["payload"].toObject()["groupName"].toString();
+            emit addedToGroup(groupName);
+        }
+        else if (type == "removed_from_group") {
+            QString groupName = msg["payload"].toObject()["groupName"].toString();
+            emit removedFromGroup(groupName);
+        }
+        else if (type == "group_created") {
+            QString groupName = msg["payload"].toObject()["groupName"].toString();
+            emit groupCreated(groupName);
+        }
+
     }
 }
 
@@ -147,8 +169,9 @@ void NetworkClient::removeUserFromGroup(const QString& groupName, const QString&
 void NetworkClient::sendGroupMessage(const QString& groupName, const QString& message)
 {
     QJsonObject payload;
-    payload["groupName"] = groupName;
+    payload["group"] = groupName;
     payload["text"]   = message;
+    payload["members"] = QJsonArray();
     sendJson("group_message", payload);
 }
 

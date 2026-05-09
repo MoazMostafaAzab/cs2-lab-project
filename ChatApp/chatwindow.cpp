@@ -1,11 +1,14 @@
 #include "chatwindow.h"
 #include "ui_chatwindow.h"
 
-ChatWindow::ChatWindow(QWidget *parent)
+ChatWindow::ChatWindow(INetworkClient* network, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ChatWindow)
 {
     ui->setupUi(this);
+    m_chatManager = new ChatManager(network, this);
+    connect(m_chatManager, &ChatManager::messageReceived,
+            this, &ChatWindow::onMessageReceived);
 }
 
 ChatWindow::~ChatWindow()
@@ -16,6 +19,8 @@ ChatWindow::~ChatWindow()
 void ChatWindow::setUsername(const QString& username)
 {
     m_username = username;
+    setWindowTitle("Chat with " + username);
+    ui->label_message->setText("Chat with " + username);
 }
 
 void ChatWindow::setChatManager(ChatManager* manager)
@@ -44,4 +49,14 @@ void ChatWindow::on_sendButton_clicked()
 void ChatWindow::onMessageReceived(const QString &sender, const QString &text)
 {
     ui->chatDisplay->append(sender + ": " + text);
+}
+
+void ChatWindow::appendMessage(const QString& sender, const QString& text)
+{
+    ui->chatDisplay->append(sender + ": " + text);
+}
+
+void ChatWindow::on_pushButton_chatwindowBack_clicked()
+{
+    this->close();
 }

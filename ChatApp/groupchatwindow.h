@@ -16,6 +16,8 @@ public:
     explicit GroupChatWindow(QWidget *parent = nullptr, INetworkClient* network = nullptr, QString groupName = "");
     ~GroupChatWindow();
 
+    void appendMessage(const QString& sender, const QString& text);
+
 private slots:
     void on_pushButton_Send_clicked();
     void on_pushButton_Back_clicked();

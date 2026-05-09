@@ -16,7 +16,6 @@ public:
     MOCK_METHOD(void, sendGroupMessage, (const QString& groupName, const QString& message), (override));
 };
 
-
 TEST(GroupManagerTest, CreateGroupEmptyName) {
     MockNetworkClient mockNetwork;
     GroupManager gm(&mockNetwork, "Abdurrahman");
@@ -30,7 +29,7 @@ TEST(GroupManagerTest, CreateGroupSuccessfully) {
     MockNetworkClient mockNetwork;
     GroupManager gm(&mockNetwork, "Abdurrahman");
 
-    EXPECT_CALL(mockNetwork, createGroup("CS2")).Times(1);
+    EXPECT_CALL(mockNetwork, createGroup(QString("CS2"))).Times(1);
 
     QString result = gm.createGroup("CS2");
 
@@ -41,7 +40,7 @@ TEST(GroupManagerTest, CreateDuplicateGroup) {
     MockNetworkClient mockNetwork;
     GroupManager gm(&mockNetwork, "Abdurrahman");
 
-    EXPECT_CALL(mockNetwork, createGroup("CS2")).Times(2);
+    EXPECT_CALL(mockNetwork, createGroup(QString("CS2"))).Times(2);
 
     gm.createGroup("CS2");
     QString result = gm.createGroup("CS2");
@@ -49,10 +48,9 @@ TEST(GroupManagerTest, CreateDuplicateGroup) {
     EXPECT_EQ(result, "Error! Group already exists!");
 }
 
-TEST(GroupManagerTest, AddUsertoNonexistentGroup) {
+TEST(GroupManagerTest, AddUserToNonexistentGroup) {
     MockNetworkClient mockNetwork;
     GroupManager gm(&mockNetwork, "Abdurrahman");
-
 
     QString result = gm.addUserToGroup("FakeGroup", "Karim");
 
@@ -63,14 +61,10 @@ TEST(GroupManagerTest, RemovingAdminFromGroup) {
     MockNetworkClient mockNetwork;
     GroupManager gm(&mockNetwork, "Abdurrahman");
 
-    EXPECT_CALL(mockNetwork, createGroup("CS2")).Times(1);
+    EXPECT_CALL(mockNetwork, createGroup(QString("CS2"))).Times(1);
 
     gm.createGroup("CS2");
     QString result = gm.removeUserFromGroup("CS2", "Abdurrahman");
 
     EXPECT_EQ(result, "Error! Admin can't be removed from the group");
 }
-
-
-
-

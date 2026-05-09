@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>654</width>
-    <height>300</height>
+    <width>500</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,20 +16,20 @@
   <widget class="QLineEdit" name="lineEdit_GroupName">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>20</y>
-     <width>113</width>
-     <height>26</height>
+     <x>140</x>
+     <y>80</y>
+     <width>200</width>
+     <height>30</height>
     </rect>
    </property>
   </widget>
   <widget class="QLabel" name="label_GroupName">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>20</y>
-     <width>111</width>
-     <height>21</height>
+     <x>30</x>
+     <y>80</y>
+     <width>100</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="text">
@@ -39,10 +39,10 @@
   <widget class="QPushButton" name="pushButton_CreateGroup">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>60</y>
-     <width>121</width>
-     <height>29</height>
+     <x>350</x>
+     <y>80</y>
+     <width>101</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="text">
@@ -52,20 +52,20 @@
   <widget class="QLineEdit" name="lineEdit_Username">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>130</y>
-     <width>113</width>
-     <height>26</height>
+     <x>140</x>
+     <y>140</y>
+     <width>200</width>
+     <height>30</height>
     </rect>
    </property>
   </widget>
   <widget class="QLabel" name="label_AddUser">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>130</y>
-     <width>121</width>
-     <height>20</height>
+     <x>19</x>
+     <y>140</y>
+     <width>111</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="text">
@@ -75,10 +75,10 @@
   <widget class="QPushButton" name="pushButton_AddUser">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>170</y>
-     <width>93</width>
-     <height>29</height>
+     <x>350</x>
+     <y>135</y>
+     <width>101</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="text">
@@ -88,10 +88,10 @@
   <widget class="QPushButton" name="pushButton_RemoveUser">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>210</y>
+     <x>350</x>
+     <y>175</y>
      <width>101</width>
-     <height>29</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="text">
@@ -101,20 +101,20 @@
   <widget class="QListWidget" name="listWidget_GroupMembers">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>81</y>
-     <width>131</width>
-     <height>201</height>
+     <x>30</x>
+     <y>250</y>
+     <width>390</width>
+     <height>150</height>
     </rect>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>50</y>
-     <width>121</width>
-     <height>20</height>
+     <x>30</x>
+     <y>220</y>
+     <width>120</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="text">
@@ -124,14 +124,46 @@
   <widget class="QPushButton" name="pushButton_groupwindowBack">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>270</y>
-     <width>93</width>
-     <height>29</height>
+     <x>260</x>
+     <y>415</y>
+     <width>120</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="text">
     <string>Back</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_groupSendMessage">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>415</y>
+     <width>120</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Send Message</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>20</y>
+     <width>241</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Group Management</string>
    </property>
   </widget>
  </widget>

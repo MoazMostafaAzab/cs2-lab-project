@@ -12,7 +12,7 @@ public:
     ~NetworkClient() = default;
 
     // INetworkClient interface
-    void sendData(const QByteArray& data) override;
+    void sendData(const QByteArray& data);
 
     // MAZEN
     void connectToServer(const QString& username)override;
@@ -34,6 +34,11 @@ signals:
     void connectedToServer();
     void disconnectedFromServer();
     void dataReceived(const QByteArray& rawData);
+    void privateMessageReceived(const QString& sender, const QString& text);
+    void groupMessageReceived(const QString& groupName, const QString& sender, const QString& text);
+    void addedToGroup(const QString& groupName);
+    void removedFromGroup(const QString& groupName);
+    void groupCreated(const QString& groupName);
 
 private slots:
     void onConnected();

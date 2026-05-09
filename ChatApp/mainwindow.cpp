@@ -2,7 +2,7 @@
 #include "chatwindow.h"
 #include "ui_mainwindow.h"
 #include "NetworkClient.h"
-#include "chatmanager.h"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,10 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     m_network = new NetworkClient(this);
-    m_chatManager = new ChatManager(m_network, this);
 
-    connect(m_network, &NetworkClient::dataReceived,
-            m_chatManager, &ChatManager::handleIncomingData);
 }
 
 MainWindow::~MainWindow()
@@ -24,9 +21,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::onLoginSuccess(const QString& username)
 {
-    ChatWindow* chat = new ChatWindow(this);
-    chat->setUsername(username);
-    chat->setChatManager(m_chatManager);
-    chat->show();
+    ChatWindow* chatWin = new ChatWindow(m_network, this);
+
+    chatWin->setUsername(username);
+    chatWin->show();
     this->hide();
 }

@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMainWindow>
-#include "chatmanager.h"
 #include "NetworkClient.h"
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +21,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     NetworkClient* m_network = nullptr;
-    ChatManager* m_chatManager = nullptr;
+
 };
 #endif // MAINWINDOW_H
