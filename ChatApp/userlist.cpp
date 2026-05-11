@@ -12,7 +12,7 @@ UserList::UserList(INetworkClient* network, LoginManager* loginManager, QWidget 
     ui->setupUi(this);
     this->m_loginManager=loginManager;
     this->m_network=network;
-    m_groupManager = new GroupManager(network, loginManager->getCurrentUser());
+    m_groupManager = nullptr;
 }
 
 UserList::~UserList()
@@ -67,7 +67,7 @@ GroupChatWindow* UserList::getOrCreateGroupChat(const QString& groupName)
         m_groupChatWindows.remove(groupName);
     });
 
-    return win;  // NOT shown yet
+    return win;
 }
 GroupChatWindow* UserList::getOrOpenGroupChat(const QString& groupName)
 {
@@ -136,6 +136,12 @@ void UserList::onGroupCreated(const QString& groupName)
         ui->listWidget_groups->findItems(groupName, Qt::MatchExactly);
     if (items.isEmpty())
         ui->listWidget_groups->addItem(groupName);
+}
+
+void UserList::initGroupManager()
+{
+    if (m_groupManager) delete m_groupManager;
+    m_groupManager = new GroupManager(m_network, m_loginManager->getCurrentUser());
 }
 
 void UserList::on_pushButton_clicked()

@@ -1,5 +1,4 @@
-#include "groupwindow.h"
-#include "mainwindow.h"
+
 #include "loginwindow.h"
 #include "loginmanager.h"
 #include "userlist.h"

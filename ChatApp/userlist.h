@@ -32,7 +32,7 @@ public:
     void onGroupMessageReceived(const QString& groupName, const QString& sender, const QString& text);
     void onRemovedFromGroup(const QString& groupName);
     void onGroupCreated(const QString& groupName);
-
+    void initGroupManager();
 
 signals:
     void logOut();

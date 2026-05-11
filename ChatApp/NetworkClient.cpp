@@ -71,7 +71,8 @@ void NetworkClient::onReadyRead()
         if (type == "user_list") {
             QJsonArray arr = msg["payload"].toObject()["users"].toArray();
             QList<QString> users;
-            for (const QJsonValue& v : arr)
+            const QJsonArray arrCopy = arr;
+            for (const QJsonValue& v : arrCopy)
                 users << v.toString();
             emit userListReceived(users);
         }
