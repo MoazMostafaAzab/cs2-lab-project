@@ -64,20 +64,16 @@ QString MessageRouter::routeMessage(int fromConnectionId, const QJsonObject& msg
         for (auto it = m_connections.begin(); it != m_connections.end(); ++it) {
             if (it.value().username.isEmpty()) continue;
 
-
             QJsonArray personalList;
             for (const QJsonValue& u : allUsers) {
                 if (u.toString() != it.value().username)
                     personalList.append(u);
-
-
-                QJsonObject listMsg;
-                listMsg["type"] = "user_list";
-            //    QJsonObject listPayload;
-            //    listPayload["users"] = personalList;
-                listMsg["payload"] = QJsonObject{{ "users", personalList }};
-                it.value().output->send(toLine(listMsg));
             }
+
+            QJsonObject listMsg;
+            listMsg["type"] = "user_list";
+            listMsg["payload"] = QJsonObject{{ "users", personalList }};
+            it.value().output->send(toLine(listMsg));
         }
 
         for (auto it = m_groups.begin(); it != m_groups.end(); ++it) {
